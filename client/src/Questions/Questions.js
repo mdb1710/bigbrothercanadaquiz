@@ -34,11 +34,12 @@ const Questions = () => {
   const newQuestions = testQuestions.map((q, index) => {
     let answer = q.correctAnswer;
     let qNumber = q.id;
+    let answerId = qNumber + index;
 
     if (value.display === true) {
       return (
         <div key={index} id={qNumber}>
-          <h3 className="question my-4">
+          <h3 className="question">
             {qNumber}. What season did {q.name} first appear?
           </h3>
           <form>
