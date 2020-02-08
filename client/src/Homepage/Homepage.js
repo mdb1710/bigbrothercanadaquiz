@@ -4,7 +4,10 @@ import QuizContext from "../QuizContext/QuizContext";
 import { Link } from "react-router-dom";
 
 import "./Homepage.css";
-import HouseguestForm from "../components/HouseguestForm";
+
+import { Grid, Typography, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 const Homepage = () => {
   const value = useContext(QuizContext);
@@ -47,39 +50,38 @@ const Homepage = () => {
   // console.log(houseGuest);
 
   return (
-    <div className="home">
-      <h2 className="">How Much Do You Know Big Brother</h2>
-      <div className="">
-        <p className="">
-          Test Your knowledge of your favorite summer guilty pleasure here
-        </p>
-        <p className="">
-          Answer each questions to see how much you really know - remember to
-          expect the unexpected
-        </p>
-      </div>
-      <div className="start">
-        <form onSubmit={handleGuestChange}>
-          <label className="houseGuest" htmlFor="houseGuest" name="houseGuest">
+    <Grid container direction="row" justify="center" alignItems="center">
+      <Box className="home">
+        <Typography variant="h2">How Much Do You Know Big Brother</Typography>
+        <Box className="">
+          <Typography>
+            Test Your knowledge of your favorite summer guilty pleasure here
+          </Typography>
+          <Typography>
+            Answer each questions to see how much you really know - remember to
+            expect the unexpected
+          </Typography>
+        </Box>
+        <div className="start">
+          <form onSubmit={handleGuestChange}>
             <h3 className="">Enter Your Name, Houseguest</h3>
-            <input
-              type="text"
-              className=""
-              placeholder="Danielle Reyes"
+            <TextField
+              id="outlined-basic"
+              label="First Name"
+              variant="standard"
               onChange={e => setHouseGuest(e.target.value)}
-              required
             />
-          </label>
 
-          <button type="submit" className="" onSubmit={handleGuestChange}>
-            Enter
-          </button>
-        </form>
-        <br />
-      </div>
+            <Button type="submit" onSubmit={handleGuestChange}>
+              Enter
+            </Button>
+          </form>
+          <br />
+        </div>
 
-      <div className="">{welcomeMessage}</div>
-    </div>
+        <Box className="">{welcomeMessage}</Box>
+      </Box>
+    </Grid>
   );
 };
 

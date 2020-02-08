@@ -4,11 +4,30 @@ import Homepage from "./Homepage/Homepage";
 import QuizSection from "./QuizSection/QuizSection";
 import Results from "./Results/Results";
 
-import Box from "@material-ui/core/Box";
+import {
+  ThemeProvider,
+  createMuiTheme,
+  responsiveFontSizes
+} from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
 
 import QuizContext from "./QuizContext/QuizContext";
 
 import testQuestions from "./TestQuestions";
+import { red, yellow } from "@material-ui/core/colors";
+import { Typography, Toolbar } from "@material-ui/core";
+
+let darkTheme = createMuiTheme({
+  palette: {
+    primary: red,
+    secondary: yellow
+  },
+  typography: {
+    fontFamily: "Raleway"
+  }
+});
+
+darkTheme = responsiveFontSizes(darkTheme);
 
 const App = () => {
   const bbAnswers = testQuestions.map(answer => {
@@ -30,17 +49,23 @@ const App = () => {
 
   return (
     <div className="App">
-      <Box component="header" color="text.primary">
-        <h1 className="">Big Brother Canada Quiz App - Season One</h1>
-      </Box>
+      <ThemeProvider theme={darkTheme}>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <Typography variant="h3">
+              Big Brother Canada Quiz - Season One
+            </Typography>
+          </Toolbar>
+        </AppBar>
 
-      <main>
-        <QuizContext.Provider value={contextValue}>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/quiz" component={QuizSection} />
-          <Route path="/results" component={Results} />
-        </QuizContext.Provider>
-      </main>
+        <main>
+          <QuizContext.Provider value={contextValue}>
+            <Route exact path="/" component={Homepage} />
+            <Route path="/quiz" component={QuizSection} />
+            <Route path="/results" component={Results} />
+          </QuizContext.Provider>
+        </main>
+      </ThemeProvider>
     </div>
   );
 };

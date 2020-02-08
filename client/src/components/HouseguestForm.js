@@ -16,9 +16,13 @@ const HouseguestForm = () => {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField
+        id="outlined-basic"
+        label="Enter Your Name, HouseGuest"
+        variant="outlined"
+      />
     </form>
   );
-}
+};
 
-export default HouseguestForm
+export default HouseguestForm;
