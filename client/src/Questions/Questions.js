@@ -4,6 +4,20 @@ import testQuestions from "../TestQuestions";
 import QuizContext from "../QuizContext/QuizContext";
 import "./Questions.css";
 
+import {
+  Grid,
+  Typography,
+  Button,
+  FormGroup,
+  FormControl,
+  FormLabel,
+  FormControlLabel,
+  RadioGroup,
+  Radio
+} from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Box } from "@material-ui/core";
+
 const Questions = () => {
   const value = useContext(QuizContext);
 
@@ -31,6 +45,38 @@ const Questions = () => {
     setAnswered(true);
   };
 
+  const canadaQuestions = testQuestions.map((q, index) => {
+    let answer = q.correctAnswer;
+    let qNumber = q.id;
+    let answerId = qNumber + index;
+
+    return (
+      <div>
+        <Grid key={index} id={qNumber}>
+          <Typography variant="h3">
+            {qNumber}. What season did {q.name} first appear?
+          </Typography>
+        </Grid>
+        <FormControl component="fieldset">
+          {q.answers.map((answer, i) => {
+            return (
+              <div key={i}>
+                <FormControlLabel
+                  control={<Radio />}
+                  value={answer}
+                  id={qNumber}
+                  onClick={handleCheckAnswer}
+                  label={answer}
+                  labelPlacement="start"
+                />
+              </div>
+            );
+          })}
+        </FormControl>
+      </div>
+    );
+  });
+
   const newQuestions = testQuestions.map((q, index) => {
     let answer = q.correctAnswer;
     let qNumber = q.id;
@@ -47,7 +93,7 @@ const Questions = () => {
               <div className="input-group-lg">
                 {q.answers.map((answer, i) => {
                   return (
-                    <div className="radio btn-group" key={i}>
+                    <div className="" key={i}>
                       <label
                         htmlFor="season"
                         className="btn btn-secondary mx-3"
@@ -88,10 +134,13 @@ const Questions = () => {
   return (
     <div className="questions">
       {newQuestions}
+      <div className="test">{canadaQuestions}</div>
 
       <div className="score-check">
         <Link to="/results">
-          <button className="btn-primary my-4 btn-lg">Check Your Score</button>
+          <Button variant="outlined" className="">
+            Check Your Score
+          </Button>
         </Link>
       </div>
     </div>

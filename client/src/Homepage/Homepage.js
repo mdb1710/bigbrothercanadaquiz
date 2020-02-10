@@ -16,9 +16,7 @@ const Homepage = () => {
 
   const handleGuestChange = e => {
     e.preventDefault();
-
     value.houseGuest = houseGuest;
-
     console.log(
       "houseguest is",
       houseGuest,
@@ -33,21 +31,13 @@ const Homepage = () => {
             Welcome {houseGuest}, you may now enter the House
           </h3>
           <Link to="/quiz">
-            <button className="btn" type="submit">
-              Start Now
-            </button>
+            <Button type="submit">Start Now</Button>
           </Link>
         </div>
       );
     });
-
     return welcomeMessage;
   };
-
-  // setHouseGuest({
-  //     houseGuest: name
-  // })
-  // console.log(houseGuest);
 
   return (
     <Grid container direction="row" justify="center" alignItems="center">
@@ -71,14 +61,16 @@ const Homepage = () => {
               variant="standard"
               onChange={e => setHouseGuest(e.target.value)}
             />
-
-            <Button type="submit" onSubmit={handleGuestChange}>
+            <Button
+              type="submit"
+              variant="outlined"
+              onSubmit={handleGuestChange}
+            >
               Enter
             </Button>
           </form>
           <br />
         </div>
-
         <Box className="">{welcomeMessage}</Box>
       </Box>
     </Grid>
