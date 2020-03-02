@@ -53,7 +53,7 @@ const Questions = () => {
     return (
       <div>
         <Grid key={index} id={qNumber}>
-          <Typography variant="h3">
+          <Typography variant="h5">
             {qNumber}. What season did {q.name} first appear?
           </Typography>
         </Grid>
@@ -77,63 +77,62 @@ const Questions = () => {
     );
   });
 
-  const newQuestions = testQuestions.map((q, index) => {
-    let answer = q.correctAnswer;
-    let qNumber = q.id;
-    let answerId = qNumber + index;
+  // const newQuestions = testQuestions.map((q, index) => {
+  //   let answer = q.correctAnswer;
+  //   let qNumber = q.id;
+  //   let answerId = qNumber + index;
 
-    if (value.display === true) {
-      return (
-        <div key={index} id={qNumber}>
-          <h3 className="question">
-            {qNumber}. What season did {q.name} first appear?
-          </h3>
-          <form>
-            <div className="input-group justify-content-center">
-              <div className="input-group-lg">
-                {q.answers.map((answer, i) => {
-                  return (
-                    <div className="" key={i}>
-                      <label
-                        htmlFor="season"
-                        className="btn btn-secondary mx-3"
-                      >
-                        <input
-                          type="radio"
-                          name="season"
-                          value={answer}
-                          id={qNumber}
-                          onClick={handleCheckAnswer}
-                          required
-                        />
-                        {answer}
-                      </label>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </form>
-        </div>
-      );
-    } else if (value.display !== true) {
-      return (
-        <div key={index} className="correct">
-          <p>Time is Up - Click Below to see your score</p>
-        </div>
-      );
-    }
-  });
+  //   if (value.display === true) {
+  //     return (
+  //       <div key={index} id={qNumber}>
+  //         <h3 className="question">
+  //           {qNumber}. What season did {q.name} first appear?
+  //         </h3>
+  //         <form>
+  //           <div className="input-group justify-content-center">
+  //             <div className="input-group-lg">
+  //               {q.answers.map((answer, i) => {
+  //                 return (
+  //                   <div className="" key={i}>
+  //                     <label
+  //                       htmlFor="season"
+  //                       className="btn btn-secondary mx-3"
+  //                     >
+  //                       <input
+  //                         type="radio"
+  //                         name="season"
+  //                         value={answer}
+  //                         id={qNumber}
+  //                         onClick={handleCheckAnswer}
+  //                         required
+  //                       />
+  //                       {answer}
+  //                     </label>
+  //                   </div>
+  //                 );
+  //               })}
+  //             </div>
+  //           </div>
+  //         </form>
+  //       </div>
+  //     );
+  //   } else if (value.display !== true) {
+  //     return (
+  //       <div key={index} className="correct">
+  //         <p>Time is Up - Click Below to see your score</p>
+  //       </div>
+  //     );
+  //   }
+  // });
 
-  useEffect(() => {
-    if (value.display !== true) {
-      return newQuestions;
-    }
-  }, [newQuestions, value.display]);
+  // useEffect(() => {
+  //   if (value.display !== true) {
+  //     return newQuestions;
+  //   }
+  // }, [newQuestions, value.display]);
 
   return (
     <div className="questions">
-      {newQuestions}
       <div className="test">{canadaQuestions}</div>
 
       <div className="score-check">

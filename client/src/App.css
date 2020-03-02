@@ -2,10 +2,8 @@
   text-align: center;
 }
 
-
-
 .App-header {
-  width: 80%
+  width: 80%;
 }
 
 .App-link {
@@ -25,11 +23,15 @@
   list-style: none;
 }
 
-input[type=radio]:checked + label {
+input[type="radio"]:checked + label {
   color: red;
   font-style: italic;
 }
 
 header {
   text-align: center;
+}
+
+fieldset {
+  display: flex;
 }
