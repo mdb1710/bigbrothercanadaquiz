@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import testQuestions from "../TestQuestions";
 import QuizContext from "../QuizContext/QuizContext";
@@ -8,11 +8,8 @@ import {
   Grid,
   Typography,
   Button,
-  FormGroup,
   FormControl,
-  FormLabel,
   FormControlLabel,
-  RadioGroup,
   Radio
 } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
@@ -76,60 +73,6 @@ const Questions = () => {
       </div>
     );
   });
-
-  // const newQuestions = testQuestions.map((q, index) => {
-  //   let answer = q.correctAnswer;
-  //   let qNumber = q.id;
-  //   let answerId = qNumber + index;
-
-  //   if (value.display === true) {
-  //     return (
-  //       <div key={index} id={qNumber}>
-  //         <h3 className="question">
-  //           {qNumber}. What season did {q.name} first appear?
-  //         </h3>
-  //         <form>
-  //           <div className="input-group justify-content-center">
-  //             <div className="input-group-lg">
-  //               {q.answers.map((answer, i) => {
-  //                 return (
-  //                   <div className="" key={i}>
-  //                     <label
-  //                       htmlFor="season"
-  //                       className="btn btn-secondary mx-3"
-  //                     >
-  //                       <input
-  //                         type="radio"
-  //                         name="season"
-  //                         value={answer}
-  //                         id={qNumber}
-  //                         onClick={handleCheckAnswer}
-  //                         required
-  //                       />
-  //                       {answer}
-  //                     </label>
-  //                   </div>
-  //                 );
-  //               })}
-  //             </div>
-  //           </div>
-  //         </form>
-  //       </div>
-  //     );
-  //   } else if (value.display !== true) {
-  //     return (
-  //       <div key={index} className="correct">
-  //         <p>Time is Up - Click Below to see your score</p>
-  //       </div>
-  //     );
-  //   }
-  // });
-
-  // useEffect(() => {
-  //   if (value.display !== true) {
-  //     return newQuestions;
-  //   }
-  // }, [newQuestions, value.display]);
 
   return (
     <div className="questions">
